@@ -1,0 +1,53 @@
+{% extends 'weather/layout.html'%}
+{% block body %}
+{% if message %}
+    <div class="alert alert-{{type}}">{{ message }}</div>
+{% endif %}
+{% if user.is_authenticated %}
+    <div class="container">
+        <div class="current-info">
+            <div class="date-container">
+                <div class="time" id="time">
+                    12:30 <span id="am-pm">PM</span>
+                </div>
+                <div class="date" id="date">
+                    Monday,24 May 
+                </div>
+            </div>
+            <div class="others" id="current-weather-items">
+
+            </div>
+            <div class="place-container">
+                <div class="time-zone" id="time-zone">Asia/Kolkata</div>
+                <div id="country" class="country">India</div>
+            </div>
+        </div>
+    </div>
+    <div class="future-forecast">
+        <div class="today" id="current-temp">
+            <img src=" http://openweathermap.org/img/wn/10d@2x.png" class="w-icon" alt="weather icon">
+            <div class="other">
+                <div class="day">Mondayy</div>
+                <div class="temp">Night-25.6&#176;C</div>
+                <div class="temp">Day-35.6&#176;C</div>
+            </div>
+        </div>
+        <div class="weather-forecast" id="weather-forecast">
+            <div class="weather-forecast-item">
+                <div class="day">Tuesday</div>
+                <img src=" http://openweathermap.org/img/wn/10d@2x.png" class="w-icon" alt="weather icon">
+                <div class="temp">Night-25.6&#176;C</div>
+                <div class="temp">Day-35.6&#176;C</div>
+            </div>
+        </div>
+    </div>
+
+{%else%}
+
+<div class="login-prompt">
+   <p>Please <a href="{% url 'login' %}">login</a> to access the service</p> 
+</div>
+
+{% endif %}
+
+{% endblock %}
